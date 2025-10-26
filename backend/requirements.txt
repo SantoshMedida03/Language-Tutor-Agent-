@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pydantic
+sqlalchemy
+psycopg2-binary
+python-jose[cryptography]
+passlib
+langchain
+langgraph
+langchain-google-genai
+python-dotenv
+fastapi-cors
+bcrypt==3.2.2
