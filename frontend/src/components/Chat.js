@@ -15,7 +15,7 @@ const Chat = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, loading]);
 
   const handleSend = async () => {
     if (input.trim() && !loading) {
@@ -25,7 +25,6 @@ const Chat = () => {
       setLoading(true);
 
       try {
-        // Reverted to the reliable, non-streaming api.post call
         const response = await api.post('/chat', { text: input });
         const botMessage = { text: response.data.message, sender: 'bot' };
         setMessages(prev => [...prev, botMessage]);
@@ -52,6 +51,13 @@ const Chat = () => {
             </div>
           </div>
         ))}
+        {loading && (
+          <div className="flex justify-start mb-4">
+            <div className="max-w-lg px-4 py-2 rounded-lg shadow bg-gray-200 text-gray-800">
+              Bot is thinking...
+            </div>
+          </div>
+        )}
         <div ref={messagesEndRef} />
       </div>
       <div className="p-4 border-t">
@@ -65,8 +71,8 @@ const Chat = () => {
             placeholder="Type your message..."
             disabled={loading}
           />
-          <button onClick={handleSend} className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700 disabled:bg-blue-300" disabled={loading}>
-            {loading ? '...' : 'Send'}
+          <button onClick={handleSend} className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700 disabled:bg-blue-300 flex items-center justify-center w-20" disabled={loading}>
+            {loading ? <div className="loader"></div> : 'Send'}
           </button>
         </div>
       </div>

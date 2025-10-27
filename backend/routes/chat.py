@@ -25,4 +25,4 @@ async def chat(message: chat_schema.ChatMessage, db: Session = Depends(auth.get_
     # Run the blocking invoke call in a thread pool to avoid freezing the server
     final_state = await run_in_threadpool(graph.invoke, initial_state)
     
-    return {"message": final_state.tutor_response}
+    return {"message": final_state["tutor_response"]}

@@ -9,11 +9,11 @@ router = APIRouter()
 
 @router.post("/signup", response_model=user_schema.User)
 def signup(user: user_schema.UserCreate, db: Session = Depends(auth.get_db)):
-    db_user = db.query(models.user.User).filter(models.user.User.username == user.username).first()
+    db_user = db.query(user_model.User).filter(user_model.User.username == user.username).first()
     if db_user:
         raise HTTPException(status_code=400, detail="Username already registered")
     hashed_password = auth.get_password_hash(user.password)
-    db_user = models.user.User(
+    db_user = user_model.User(
         username=user.username,
         hashed_password=hashed_password,
         preferred_language=user.preferred_language,
@@ -27,7 +27,7 @@ def signup(user: user_schema.UserCreate, db: Session = Depends(auth.get_db)):
 
 @router.post("/login", response_model=token_schema.Token)
 def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(auth.get_db)):
-    user = db.query(models.user.User).filter(models.user.User.username == form_data.username).first()
+    user = db.query(user_model.User).filter(user_model.User.username == form_data.username).first()
     if not user or not auth.verify_password(form_data.password, user.hashed_password):
         raise HTTPException(
             status_code=401,
