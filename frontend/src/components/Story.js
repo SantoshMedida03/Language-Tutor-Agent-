@@ -10,7 +10,7 @@ const Story = () => {
     const fetchStory = async () => {
       setError('');
       try {
-        const response = await api.post('/story');
+        const response = await api.get('/story');
         setStory(response.data);
       } catch (err) {
         setError('Failed to load story.');

@@ -4,9 +4,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 import json
 from sqlalchemy.orm import Session
-from ...models.vocabulary import Vocabulary
-from ...utils.auth import get_db
-from ...schemas.chat import ChatState
+from models.vocabulary import Vocabulary
+from utils.auth import get_db
+from schemas.chat import ChatState
 from datetime import date, timedelta
 
 class VocabularyNode:

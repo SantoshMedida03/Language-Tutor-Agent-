@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from ..schemas import vocabulary as vocab_schema
-from ..utils import auth
-from ..models.vocabulary import Vocabulary
-from ..models.user import User
+from schemas import vocabulary as vocab_schema
+from utils import auth
+from models.vocabulary import Vocabulary
+from models.user import User
 from typing import List
 
 router = APIRouter()

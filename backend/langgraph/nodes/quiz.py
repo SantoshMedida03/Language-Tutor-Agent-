@@ -4,10 +4,10 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 import json
 from sqlalchemy.orm import Session
-from ...models.quiz import Quiz
-from ...utils.auth import get_db
+from models.quiz import Quiz
+from utils.auth import get_db
 
-from ...schemas.chat import ChatState
+from schemas.chat import ChatState
 
 class QuizNode:
     def __init__(self):

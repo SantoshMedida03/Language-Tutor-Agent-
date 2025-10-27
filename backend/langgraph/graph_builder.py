@@ -1,6 +1,6 @@
 from langgraph.graph import StateGraph, END
-from .nodes import ConversationNode, VocabularyNode, StoryGenerationNode, QuizNode, AdaptationNode
-from ..schemas.chat import ChatState
+from langgraph.nodes import ConversationNode, VocabularyNode, StoryGenerationNode, QuizNode, AdaptationNode
+from schemas.chat import ChatState
 
 def create_graph():
     graph = StateGraph(ChatState)

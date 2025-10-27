@@ -2,7 +2,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import os
-from ...schemas.chat import ChatState
+from schemas.chat import ChatState
 
 class ConversationNode:
     def __init__(self):

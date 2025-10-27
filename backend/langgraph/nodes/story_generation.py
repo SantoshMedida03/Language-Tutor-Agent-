@@ -3,12 +3,12 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 from sqlalchemy.orm import Session
-from ...models.story import Story
-from ...utils.auth import get_db
+from models.story import Story
+from utils.auth import get_db
 
-from ...schemas.chat import ChatState
+from schemas.chat import ChatState
 
-from ...models.user import User
+from models.user import User
 
 class StoryGenerationNode:
     def __init__(self):

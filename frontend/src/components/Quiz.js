@@ -10,7 +10,7 @@ const Quiz = () => {
     const fetchQuiz = async () => {
       setError('');
       try {
-        const response = await api.post('/quiz');
+        const response = await api.get('/quiz');
         setQuiz(response.data);
       } catch (err) {
         setError('Failed to load quiz.');

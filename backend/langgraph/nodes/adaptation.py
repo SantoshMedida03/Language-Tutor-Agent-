@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
-from ...models.user import User
-from ...utils.auth import get_db
+from models.user import User
+from utils.auth import get_db
 
-from ...schemas.chat import ChatState
+from schemas.chat import ChatState
 
 class AdaptationNode:
     def __call__(self, state: ChatState) -> ChatState:

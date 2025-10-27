@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Date, ForeignKey
 from sqlalchemy.orm import relationship
-from ..config.database import Base
+from config.database import Base
 
 class Vocabulary(Base):
     __tablename__ = "vocabulary"

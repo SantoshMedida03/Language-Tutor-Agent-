@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from ..schemas import quiz as quiz_schema
-from ..utils import auth
-from ..models.quiz import Quiz
-from ..models.user import User
+from schemas import quiz as quiz_schema
+from utils import auth
+from models.quiz import Quiz
+from models.user import User
 
 router = APIRouter()
 

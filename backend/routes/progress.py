@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from ..schemas import progress_log as progress_schema
-from ..utils import auth
-from ..models.progress_log import ProgressLog
-from ..models.user import User
+from schemas import progress_log as progress_schema
+from utils import auth
+from models.progress_log import ProgressLog
+from models.user import User
 from typing import List
 
 router = APIRouter()

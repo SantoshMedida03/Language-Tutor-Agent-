@@ -8,18 +8,18 @@ import Progress from '../components/Progress';
 
 const Dashboard = () => {
   return (
-    <div className="flex flex-col h-screen bg-gray-100">
+    <div className="flex flex-col bg-gray-100">
       <Header />
-      <main className="flex-grow container mx-auto p-4 lg:p-6 overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
+      <main className="flex-grow container mx-auto p-4 lg:p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Main Content: Chat */}
-          <div className="lg:col-span-2 h-[calc(100vh-120px)]">
+          <div className="lg:col-span-2">
             <Chat />
           </div>
 
           {/* Sidebar */}
-          <div className="flex flex-col gap-6 h-[calc(100vh-120px)] overflow-y-auto">
+          <div className="flex flex-col gap-6">
             <Story />
             <Quiz />
             <Vocabulary />
