@@ -17,7 +17,7 @@ const LoginPage = () => {
     params.append('password', password);
 
     try {
-      const response = await api.post('/login', params, {
+      const response = await api.post('/token', params, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },

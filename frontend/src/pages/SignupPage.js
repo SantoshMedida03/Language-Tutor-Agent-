@@ -21,6 +21,10 @@ const SignupPage = () => {
         preferred_language,
         learning_level,
         interests,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
       navigate('/login');
     } catch (err) {
@@ -54,6 +58,32 @@ const SignupPage = () => {
               className="w-full p-2 border border-gray-300 rounded-md"
               required
             />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-700">Preferred Language</label>
+            <select 
+              value={preferred_language} 
+              onChange={(e) => setPreferredLanguage(e.target.value)} 
+              className="w-full p-2 border border-gray-300 rounded-md"
+            >
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+            </select>
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-700">Learning Level (1-5)</label>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              step="0.5"
+              value={learning_level}
+              onChange={(e) => setLearningLevel(parseFloat(e.target.value))}
+              className="w-full"
+            />
+            <div className="text-center">{learning_level}</div>
           </div>
           <div className="mb-4">
             <label className="block mb-2 text-sm font-medium text-gray-700">Interests</label>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import api from '../services/api';
 
-const Chat = () => {
+const Chat = ({ onDataUpdate }) => {
   const [messages, setMessages] = useState([
     { text: "Hello! I'm your AI language tutor. Ask me anything or just start a conversation.", sender: 'bot' }
   ]);
@@ -26,8 +26,15 @@ const Chat = () => {
 
       try {
         const response = await api.post('/chat', { text: input });
-        const botMessage = { text: response.data.message, sender: 'bot' };
+        const botMessageText = response.data.message;
+        const botMessage = { text: botMessageText, sender: 'bot' };
         setMessages(prev => [...prev, botMessage]);
+
+        // Check if the bot's response indicates a data update is needed
+        const lowerCaseMessage = botMessageText.toLowerCase();
+        if (lowerCaseMessage.includes('story') || lowerCaseMessage.includes('quiz')) {
+          onDataUpdate();
+        }
       } catch (error) {
         const errorMessage = { text: "Sorry, I couldn't connect to the server.", sender: 'bot' };
         setMessages(prev => [...prev, errorMessage]);

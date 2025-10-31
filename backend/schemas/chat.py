@@ -12,3 +12,4 @@ class ChatState(BaseModel):
     story: str
     quiz: Dict[str, Any]
     quiz_accuracy: float
+    next_node: str = ""

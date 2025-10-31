@@ -11,7 +11,7 @@ from datetime import date, timedelta
 
 class VocabularyNode:
     def __init__(self):
-        self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=os.getenv("GEMINI_API_KEY"))
+        self.llm = ChatGoogleGenerativeAI(model="models/gemini-2.5-flash", google_api_key=os.getenv("GEMINI_API_KEY"))
         self.prompt_template = PromptTemplate.from_template(
             "Extract any new vocabulary words from this conversation: {conversation}. "
             "For each word, provide the word, its meaning, and an example sentence. "

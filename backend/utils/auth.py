@@ -28,12 +28,19 @@ def get_db():
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
+from datetime import datetime, timedelta, timezone
+
 def get_password_hash(password):
     # Generate a salt and hash the password
     return pwd_context.hash(password)
 
-def create_access_token(data: dict):
+def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.now(timezone.utc) + expires_delta
+    else:
+        expire = datetime.now(timezone.utc) + timedelta(minutes=15)
+    to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
